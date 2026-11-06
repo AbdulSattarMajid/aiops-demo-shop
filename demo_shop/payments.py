@@ -5,4 +5,7 @@ import os
 
 
 def load_payment_config() -> dict[str, str]:
-    return {"payment_key": os.environ["SHOP_PAYMENT_KEY"]}
+    key = os.getenv("SHOP_PAYMENT_KEY")
+    if key is None:
+        raise RuntimeError("Missing payment key")
+    return {"payment_key": key}
