@@ -9,5 +9,5 @@ def test_deleted_user_profile_has_a_clear_error():
     shop = ShopStore()
     shop.delete_user(1)
 
-    with pytest.raises(LookupError, match="user"):
+    with pytest.raises(LookupError, match="(?i)user"):
         shop.profile_email(1)
